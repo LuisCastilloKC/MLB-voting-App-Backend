@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2021_11_20_034738) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "player_names", force: :cascade do |t|
     t.string "name"
     t.integer "votes", default: 0
-    t.integer "poll_id"
+    t.bigint "poll_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["poll_id"], name: "index_player_names_on_poll_id"
